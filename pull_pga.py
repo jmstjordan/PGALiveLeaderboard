@@ -101,7 +101,7 @@ players = get_players(soup, player_col, score_col, thru_col)
 
 verify_scrape(players)
 
-data = {'Tournament': get_tournament_name(soup), 'Players': players}
+data = {'Tournament': get_tournament_name(soup), 'IsActive': active, 'Players': players}
 
 with open('data.json', 'w') as f:  
     json.dump(data, f)
