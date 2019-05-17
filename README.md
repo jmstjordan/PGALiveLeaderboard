@@ -8,8 +8,8 @@ Running this job will write a file in this format:
 
 ### Dependencies
 
--BeautifulSoup (bs4)
--Requests (requests)
+- BeautifulSoup (bs4)
+- Requests (requests)
 
 ### Usage
 
