@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 
 def get_players(soup, player_col, score_col, thru_col):
-    rows = soup.find_all("tr", class_="Table2__tr")
+    rows = soup.find_all("tr", class_="Table__TR Table__even")
     players = {}
     for row in rows[1:]:
         print(row.text)
@@ -34,7 +34,7 @@ def get_players(soup, player_col, score_col, thru_col):
     return players
 
 def get_col_indecies(soup):
-    header_rows = soup.find_all("tr", class_="Table2__header-row")
+    header_rows = soup.find_all("tr", class_="Table__TR Table__even")
 
     # other possible entries for what could show up, add here.
     player_fields = ['PLAYER']
@@ -86,7 +86,7 @@ def verify_scrape(players):
         exit()
 
 def get_tournament_name(soup):
-    tournament_name = soup.find_all("h1", class_="headline__h1 Leaderboard__Event__Title")[0].text
+    tournament_name = soup.find_all("h1", class_="headline headline__h1 Leaderboard__Event__Title")[0].text
     return tournament_name
 
 
@@ -103,6 +103,6 @@ verify_scrape(players)
 
 data = {'Tournament': get_tournament_name(soup), 'IsActive': active, 'Players': players}
 
-with open('data.json', 'w') as f:  
+with open('data.json', 'w') as f:
     json.dump(data, f)
 
